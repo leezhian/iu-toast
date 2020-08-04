@@ -26,10 +26,10 @@ Toast.loading()
 
 | 方法名        | 说明         | 参数                | 返回值 |
 | ------------- | ------------ | ------------------- | ------ |
-| Toast         | 展示提示     | `options | message` | `void` |
-| Toast.loading | 展示加载提示 | `options | message` | `void` |
-| Toast.success | 展示成功提示 | `options | message` | `void` |
-| Toast.fail    | 展示失败提示 | `options | message` | `void` |
+| Toast         | 展示提示     | `options or message` | `void` |
+| Toast.loading | 展示加载提示 | `options or message` | `void` |
+| Toast.success | 展示成功提示 | `options or message` | `void` |
+| Toast.fail    | 展示失败提示 | `options or message` | `void` |
 | Toast.clear   | 清除提示     | -                   | `void` |
 
 
