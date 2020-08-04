@@ -1,0 +1,1 @@
+module.exports = require('./dist/iu-toast.min');

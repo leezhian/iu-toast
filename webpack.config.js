@@ -5,7 +5,10 @@ module.exports = {
   mode: devMode ? 'development' : 'production',
   devtool: devMode ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
   output: {
-    filename: 'iu-toast.min.js'
+    filename: 'iu-toast.min.js',
+    library: 'iToast',
+    libraryExport: 'default',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [

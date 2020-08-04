@@ -17,23 +17,23 @@
 <script src="../dist/iu-toast.min.js"></script>
 <script>
   $('#btn1').on('click', function () {
-    Toast('这是一个toast')
+    iToast('这是一个toast')
   })
 
   $('#btn2').on('click', function () {
-    Toast.loading()
+    iToast.loading()
   })
 
   $('#btn3').on('click', function () {
-    Toast.success()
+    iToast.success()
   })
 
   $('#btn4').on('click', function () {
-    Toast.fail()
+    iToast.fail()
   })
 
   $('#btn5').on('click', function () {
-    Toast({
+    iToast({
       type: 'loading',
       message: '自定义',
       position: 'bottom'

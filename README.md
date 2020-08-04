@@ -11,13 +11,13 @@
 ```
 
 ```javascript
-Toast('提示内容')
+iToast('提示内容')
 // 成功提示
-Toast.success()
+iToast.success()
 // 失败提示
-Toast.fail()
+iToast.fail()
 // 加载提示
-Toast.loading()
+iToast.loading()
 ```
 
 
@@ -26,11 +26,11 @@ Toast.loading()
 
 | 方法名        | 说明         | 参数                | 返回值 |
 | ------------- | ------------ | ------------------- | ------ |
-| Toast         | 展示提示     | `options or message` | `void` |
-| Toast.loading | 展示加载提示 | `options or message` | `void` |
-| Toast.success | 展示成功提示 | `options or message` | `void` |
-| Toast.fail    | 展示失败提示 | `options or message` | `void` |
-| Toast.clear   | 清除提示     | -                   | `void` |
+| iToast         | 展示提示     | `options or message` | `void` |
+| iToast.loading | 展示加载提示 | `options or message` | `void` |
+| iToast.success | 展示成功提示 | `options or message` | `void` |
+| iToast.fail    | 展示失败提示 | `options or message` | `void` |
+| iToast.clear   | 清除提示     | -                   | `void` |
 
 
 

@@ -142,7 +142,7 @@ class CreateToast {
 }
 
 let toast;
-const Toast = (function () {
+const iToast = (function () {
   let timer;
   const defaultConfig = {
     type: 'text',
@@ -222,7 +222,7 @@ const Toast = (function () {
   }
 })()
 
-Toast.loading = function (opt) {
+iToast.loading = function (opt) {
   let temp
   opt = opt || { message: '加载中...', type: 'loading', forbidClick: true }
   if (typeof opt === 'string') {
@@ -232,10 +232,10 @@ Toast.loading = function (opt) {
   } else {
     throw new Error('params is string or object');
   }
-  Toast(temp)
+  iToast(temp)
 }
 
-Toast.success = function (opt) {
+iToast.success = function (opt) {
   let temp
   opt = opt || { message: '成功', type: 'success' }
   if (typeof opt === 'string') {
@@ -245,10 +245,10 @@ Toast.success = function (opt) {
   } else {
     throw new Error('params is string or object');
   }
-  Toast(temp)
+  iToast(temp)
 }
 
-Toast.fail = function (opt) {
+iToast.fail = function (opt) {
   let temp
   opt = opt || { message: '失败', type: 'fail' }
   if (typeof opt === 'string') {
@@ -258,11 +258,13 @@ Toast.fail = function (opt) {
   } else {
     throw new Error('params is string or object');
   }
-  Toast(temp)
+  iToast(temp)
 }
 
-Toast.clear = function () {
+iToast.clear = function () {
   toast.hide()
   document.body.classList.remove('iu-toast_unclickable')
   toast.showOverlay(false)
 }
+
+export default iToast
