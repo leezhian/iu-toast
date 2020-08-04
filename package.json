@@ -9,7 +9,10 @@
     "scss": "cross-env NODE_ENV=production gulp scss",
     "watch:scss": "cross-env NODE_ENV=development gulp watchScss"
   },
-  "keywords": [],
+  "keywords": [
+    "toast",
+    "iu-toast"
+  ],
   "author": "kim",
   "license": "ISC",
   "browserslist": [
@@ -19,7 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:kami232/iu-toast.git"
+    "url": "https://github.com/kami232/iu-toast.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",
