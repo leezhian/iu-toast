@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DEMO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../dist/iu-toast.min.css">
+</head>
+<body>
+<button id="btn1">默认</button>
+<button id="btn2">加载</button>
+<button id="btn3">成功</button>
+<button id="btn4">失败</button>
+<button id="btn5">自定义</button>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../dist/iu-toast.min.js"></script>
+<script>
+  $('#btn1').on('click', function () {
+    Toast('这是一个toast')
+  })
+
+  $('#btn2').on('click', function () {
+    Toast.loading()
+  })
+
+  $('#btn3').on('click', function () {
+    Toast.success()
+  })
+
+  $('#btn4').on('click', function () {
+    Toast.fail()
+  })
+
+  $('#btn5').on('click', function () {
+    Toast({
+      type: 'loading',
+      message: '自定义',
+      position: 'bottom'
+    })
+  })
+</script>
+</body>
+</html>

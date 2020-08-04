@@ -1,0 +1,155 @@
+body {
+  min-width: 100vm;
+  margin: 0;
+}
+
+@keyframes loading-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circular {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -40;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -120;
+  }
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1982800 */
+  src: url('//at.alicdn.com/t/font_1982800_tq4ggsuojz.eot');
+  src: url('//at.alicdn.com/t/font_1982800_tq4ggsuojz.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1982800_tq4ggsuojz.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1982800_tq4ggsuojz.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1982800_tq4ggsuojz.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1982800_tq4ggsuojz.svg#iconfont') format('svg');
+}
+
+.iu-toast_overlay::after {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.iu-toast_unclickable * {
+  pointer-events: none;
+}
+
+.iu-toast {
+  z-index: 1000;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 88px;
+  min-height: 88px;
+  max-width: 70%;
+  box-sizing: content-box;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, .7);
+  transition: opacity 200ms ease-in;
+
+  &.iu-toast-text {
+    width: fit-content;
+    min-width: 96px;
+    min-height: 0;
+    padding: 8px 12px;
+
+    .iu-toast_text {
+      margin-top: 0;
+    }
+  }
+
+  &.iu-toast_top {
+    top: 50px;
+  }
+
+  &.iu-toast_bottom {
+    top: auto;
+    bottom: 50px;
+  }
+
+  &.iu-fade-enter {
+    opacity: 0;
+  }
+
+  .iu-toast_loading {
+    padding: 4px;
+  }
+
+  .iu-toast_icon {
+    position: relative;
+    display: inline-block;
+    font: normal normal normal 36px iconfont;
+    text-rendering: auto;
+  }
+
+  .iu-toast_text {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-wrap;
+  }
+}
+
+.iu-toast_loading {
+  .iu-loading_spinner {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    animation: loading-rotate 2s linear infinite;
+  }
+
+  .iu-loading_circular {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    circle {
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+      animation: circular 1.5s ease-in-out infinite;
+    }
+  }
+}
+
+.iu-toast_icon {
+  &.iu-toast_success::before {
+    content: "\e656";
+  }
+
+  &.iu-toast_fail::before {
+    content: "\e658";
+  }
+}
