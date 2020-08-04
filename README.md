@@ -3,13 +3,22 @@
 
 
 
-## 使用
-- 引入 js 和 css
+## 安装and使用
+- 引入方式一：
 ```html
 <link rel="stylesheet" href="iu-toast.min.css">
 <script src="iu-toast.min.js"></script>
 ```
+- 引入方式二：
+```shell
+npm install iu-toast
+```
+```javascript
+import 'iu-toast/dist/iu-toast.min.css'
+import iToast from 'iu-toast';
+```
 
+- 使用
 ```javascript
 iToast('提示内容')
 // 成功提示
