@@ -16,9 +16,6 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../dist/iu-toast.min.js"></script>
 <script>
-  document.getElementById('btn1').addEventListener('click', function () {
-    iToast('这是一个toast')
-  })
   $('#btn1').on('click', function () {
     iToast('这是一个toast')
   })
@@ -39,7 +36,8 @@
     iToast({
       type: 'loading',
       message: '自定义',
-      position: 'bottom'
+      position: 'bottom',
+      overlay: 'true'
     })
   })
 </script>

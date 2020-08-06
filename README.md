@@ -1,9 +1,12 @@
+中文 | [ENGLISH](./README.en.md)
+
 # iu-toast
+
 原生js的toast插件，不依赖任何库。
 
 
 
-## 安装and使用
+## 安装&使用
 - 引入方式一：
 ```html
 <link rel="stylesheet" href="iu-toast.min.css">
@@ -35,11 +38,14 @@ iToast.loading()
 
 | 方法名        | 说明         | 参数                | 返回值 |
 | ------------- | ------------ | ------------------- | ------ |
-| iToast         | 展示提示     | `options or message` | `void` |
-| iToast.loading | 展示加载提示 | `options or message` | `void` |
-| iToast.success | 展示成功提示 | `options or message` | `void` |
-| iToast.fail    | 展示失败提示 | `options or message` | `void` |
+| iToast         | 展示提示     | `options or message` | toast实例 |
+| iToast.loading | 展示加载提示 | `options or message` | toast实例 |
+| iToast.success | 展示成功提示 | `options or message` | toast实例 |
+| iToast.fail    | 展示失败提示 | `options or message` | toast实例 |
 | iToast.clear   | 清除提示     | -                   | `void` |
+| iToast.allowMultiToast | 允许同时存在多个Toast | - | `void` |
+| iToast.setConfig | 修改默认配置，对所有Toast生效，传入type可以修改指定项默认配置 | `options or type` | `void` |
+| iToast.resetConfig | 重置默认配置，对所有Toast生效，传入type可以重置指定项默认配置 | `type` | `void` |
 
 
 

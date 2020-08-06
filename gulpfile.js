@@ -10,7 +10,7 @@ const webpackStream = require('webpack-stream');
 
 // 编译压缩scss
 function scss (cb) {
-  src('src/iu-toast.scss')
+  src('src/scss/iu-toast.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cssnano())
@@ -30,7 +30,7 @@ function scripts (cb) {
   const webpackConfigPath = path.join(process.cwd(), 'webpack.config.js');
   const webpackConfig = require(webpackConfigPath);
 
-  src('src/*.js')
+  src('src/js/*.js')
     .pipe(gulpIf(webpackConfig, webpackStream(webpackConfig, webpack)))
     .pipe(dest('./dist'));
   cb();
