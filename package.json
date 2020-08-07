@@ -1,6 +1,6 @@
 {
   "name": "iu-toast",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "原生js的toast插件，不依赖任何库。",
   "main": "src/js/iu-toast.js",
   "scripts": {
