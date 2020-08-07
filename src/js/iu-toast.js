@@ -1,5 +1,33 @@
 import { ClassName, config } from './config'
 
+/**
+ * 校验器
+ * @type {{isHasAttr(*=, *=): *, isObject(*=): *, isFunction(*=): boolean, isSameType(*=, *=): boolean, isString(*=): boolean}}
+ */
+const validators = {
+  isString (str) {
+    return typeof str === 'string'
+  },
+  isObject (obj) {
+    return typeof obj === 'object' && !Array.isArray(obj)
+  },
+  isFunction (fn) {
+    return typeof fn === 'function'
+  },
+  isSameType (value, value2) {
+    if (typeof value !== typeof value2) {
+      return false
+    }
+    if (this.isObject(value) !== this.isObject(value2)) {
+      return false
+    }
+    return true
+  },
+  isHasAttr (obj, key) {
+    return Object.keys(obj).includes(key)
+  }
+}
+
 // 根据不同type干不同操作
 const doType = {
   'text': function (toast) {
@@ -168,9 +196,9 @@ const iToast = (function () {
     }
     // 合并配置
     let temp;
-    if (typeof opt === 'string') {
+    if (validators.isString(opt)) {
       temp = { message: opt }
-    } else if (typeof opt === 'object' && !Array.isArray(opt)) {
+    } else if (validators.isObject(opt)) {
       temp = opt
     } else {
       throw new Error('params is string or object');
@@ -243,9 +271,9 @@ const iToast = (function () {
 iToast.loading = function (opt) {
   let temp
   opt = opt || { message: '加载中...', type: 'loading', forbidClick: true }
-  if (typeof opt === 'string') {
+  if (validators.isString(opt)) {
     temp = { message: opt, type: 'loading', forbidClick: true }
-  } else if (typeof opt === 'object' && !Array.isArray(opt)) {
+  } else if (validators.isObject(opt)) {
     temp = Object.assign({}, opt, { type: 'loading', forbidClick: true });
   } else {
     throw new Error('params is string or object');
@@ -260,9 +288,9 @@ iToast.loading = function (opt) {
 iToast.success = function (opt) {
   let temp
   opt = opt || { message: '成功', type: 'success' }
-  if (typeof opt === 'string') {
+  if (validators.isString(opt)) {
     temp = { message: opt, type: 'success' }
-  } else if (typeof opt === 'object' && !Array.isArray(opt)) {
+  } else if (validators.isObject(opt)) {
     temp = Object.assign({}, opt, { type: 'success' });
   } else {
     throw new Error('params is string or object');
@@ -277,9 +305,9 @@ iToast.success = function (opt) {
 iToast.fail = function (opt) {
   let temp
   opt = opt || { message: '失败', type: 'fail' }
-  if (typeof opt === 'string') {
+  if (validators.isString(opt)) {
     temp = { message: opt, type: 'fail' }
-  } else if (typeof opt === 'object' && !Array.isArray(opt)) {
+  } else if (validators.isObject(opt)) {
     temp = Object.assign({}, opt, { type: 'fail' });
   } else {
     throw new Error('params is string or object');
@@ -321,17 +349,17 @@ iToast.allowMultiToast = function () {
  * @param value
  */
 iToast.setConfig = function (type, value) {
-  if (!type || Array.isArray(type) || typeof type === 'boolean' || typeof type === 'number') {
+  if (!type || (!validators.isString(type) && !validators.isObject(type))) {
     throw new Error('function setConfig must have arguments, which can be either a String or an Object')
   }
-  if (typeof type === 'object') {
+  if (validators.isObject(type)) {
     defaultConfig = Object.assign({}, defaultConfig, type)
   }
-  if (typeof type === 'string') {
+  if (validators.isString(type)) {
     if (!value) {
       throw new Error('When the first argument is of type String, the second argument must be passed')
     }
-    defaultConfig[type] && typeof defaultConfig[type] === typeof value && (defaultConfig = Object.assign({}, defaultConfig, { [type]: value }))
+    validators.isHasAttr(defaultConfig, type) && (validators.isSameType(defaultConfig[type], value) || (['onOpened', 'onClose'].includes(type) && validators.isFunction(value))) && (defaultConfig = Object.assign({}, defaultConfig, { [type]: value }))
   }
 }
 
@@ -345,11 +373,11 @@ iToast.resetConfig = function (type) {
     defaultConfig = config
     return
   }
-  if (typeof type !== 'string') {
+  if (!validators.isString(type)) {
     throw new Error('type is not string')
   }
 
-  defaultConfig[type] && (defaultConfig[type] = config[type])
+  validators.isHasAttr(defaultConfig, type) && (defaultConfig[type] = config[type])
 }
 
 export default iToast
